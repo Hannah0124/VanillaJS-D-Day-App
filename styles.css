@@ -1,0 +1,66 @@
+body {
+  font-family: sans-serif;
+  background: url("https://i.ibb.co/LvdQv9v/xmas.png") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  color: white;
+  margin-top: 150px;
+  text-align: center;
+}
+
+input {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  border-bottom: 3px solid white;
+  background-color: transparent;
+  color: black;
+  background-color: white;
+  opacity: 0.5;
+}
+
+
+.submitBtn {
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0;
+  background-color: transparent;
+  color: white;
+}
+
+
+.submitBtn:hover {
+ color: gray;
+}
+
+h1 {
+  margin: 5px;
+}
+
+.current {
+  margin-top: 20px;
+}
+
+.dday-clock,
+.current-clock {
+  font-size: 60px;
+  margin: 0;
+}
+
+.today {
+  font-size: 20px;
+  color: lightgray;
+}
+
+.showing {
+  display: block;
+}

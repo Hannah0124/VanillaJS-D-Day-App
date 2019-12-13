@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <form>
+        <input
+          class="calendar"
+          type="date"
+          placeholder="Enter your d-day (mm/dd//yy)"
+          value="2019-12-24"
+          max="2019-12-31"
+          autocomplete="off"
+        />
+        <!-- <button class="submitBtn" type="submit" value="Submit">Submit</button> -->
+      </form>
+      <h1 class="timeUntil showing">Time Until<span class="title"> Chirstmas Eve!</span></h1>
+      <h2 class="dday-clock showing"></h2>
+      <h2 class="dday-message"></h2>
+      <br />
+
+      <h1 class="current">Current Time</h1>
+      <h2 class="current-clock"></h2>
+      <span class="today"></span>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
