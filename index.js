@@ -11,15 +11,20 @@ const ddayClock = document.querySelector('.dday-clock'),
 
 const D_DAY = 'dDay';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 function saveDate(date) {
 	localStorage.setItem(D_DAY, date);
+	// loadData();
 }
 
 function handleSelect(event) {
 	event.preventDefault();
 	const inputDate = calendar.value;
-	console.log('inputDate?? ' + inputDate);
+
 	getTime();
+	// saveDate(inputDate) // TEST
+	console.log('inputDate?? ' + inputDate);;
 }
 
 function addZero(num) {
@@ -33,8 +38,13 @@ function addZero(num) {
 function getTime() {
 	form.addEventListener('select', handleSelect);
 
-	const inputDate = calendar.value;
 
+	const inputDate = calendar.value;
+	// TEST
+	// const inputDate = localStorage.getItem(D_DAY)
+
+	console.log('yay', inputDate)
+	
 	const dDay = new Date(`${inputDate}:00:00:00+0900`);
 	const dateNow = new Date();
 
@@ -56,24 +66,34 @@ function getTime() {
 			ddayClock.innerHTML = `<span>Today is D-Day!!!😃</span>`;
 		}
 	} else {
-		ddayClock.innerText = 
+		if (Number.isNaN(months)) {
+			ddayClock.innerText = 'Select your date!'
+		} else {
+			ddayClock.innerText = 
 			months > 0 
 				? `${months} months ${days} days ${addZero(hours)}:${addZero(minutes)}:${addZero(
 						seconds
 					)}`
 				: `${addZero(days)} days ${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
+		}
 	}
 
-	if (inputDate === '2019-12-24') {
-		title.innerText = ' Chirstmas Eve!';
-	} else if (inputDate === '2019-12-25') {
-		title.innerText = ' Chirstmas!';
-	} else if (inputDate === '2019-12-31') {
-		title.innerText = ' End of Year!';
+
+	inputArr = inputDate.split('-');
+	console.log(inputDate.length);
+	if (inputDate.length === 0) {
+		title.innerText = '...';
+	} else if (inputArr[1] === '12') {
+		if (inputArr[2] === '24') {
+			title.innerText = ' Chirstmas Eve!';
+		} else if (inputArr[2] === '25') {
+			title.innerText = ' Chirstmas!';
+		} else if (inputArr[2] === '31') {
+			title.innerText = ' End of Year!';
+		}
 	} else {
-		const calendarArr = inputDate.split('-');
 		// console.log(inputDate);
-		title.innerText = ` ${calendarArr[1]}/${calendarArr[2]}/${calendarArr[0]}`;
+		title.innerText = ` ${inputArr[1]}/${inputArr[2]}/${inputArr[0]}`;
 	}
 	// console.log(calendar.value);
 
@@ -100,6 +120,8 @@ function getCurrentTime() {
 
 function loadData() {
 	const dDayfromLS = localStorage.getItem(D_DAY);
+	console.log('from ls' + dDayfromLS)
+
 
   // If there is data from LS
 	if (dDayfromLS !== null) {
